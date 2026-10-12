@@ -57,8 +57,21 @@ These are plain PyTorch numbers, not TensorRT, so don't compare them with latenc
 - **Competitive for the budget.** Reaching about 79% of the fully trained reference in 35 epochs is a strong result for a from-scratch run, helped by a time-budgeted schedule (the learning rate decays fully and mosaic augmentation turns off at the end of the budget).
 - **Small objects are the weak spot.** AP small (14.5) is far below AP large (45.7), a known limitation of a 2.6 M-parameter model at 640 px.
 - **Accuracy is limited by training time, not by the setup.** The run is CPU-bound on Kaggle's 4 cores (JPEG decoding and mosaic augmentation), so more epochs would need more sessions or a machine with more cores.
+- Verifiably from scratch. `results/training_history.csv` and the training curves show the first epochs starting near zero mAP, unlike a pretrained model.
 
 ---
+
+### Visual results
+Training curves (losses and validation metrics per epoch)
+![Training curves](assets/results.png)
+Sample predictions on val2017 images:
+![Sample predictions](assets/val_batch0_pred.jpg)
+Precision-recall curve and normalized confusion matrix
+<p align="center">
+  <img src="assets/BoxPR_curve.png" width="48%" ...>
+  <img src="assets/confusion_matrix_normalized.png" width="48%" ...>
+ </p>
+ Per-class numbers are in results/per_class_metrics.csv
 
 ## Features
 
@@ -90,11 +103,13 @@ COCO 2017 (Kaggle dataset)
 ```
 
 ## Repository contents
-
-| File | Description |
-|------|-------------|
-| `yolo_coco_from_scratch_kaggle.ipynb` | The full pipeline notebook (**code only, outputs cleared**) |
-| `README.md` | This file |
+.
+├── README.md
+├── yolo_coco_from_scratch_kaggle.ipynb
+├── results/   (metrics_summary.json, coco_official_metrics.csv,
+│               per_class_metrics.csv, training_history.csv)
+└── assets/    (results.png, val_batch0_pred.jpg,
+                BoxPR_curve.png, confusion_matrix_normalized.png)
 
 This repository holds the clean source. The notebook with the real training logs, plots and metrics from the reported run is published on Kaggle: [executed run](https://www.kaggle.com/code/mohamedatta22/yolo-coco). Every number in this README comes from that run.
 
