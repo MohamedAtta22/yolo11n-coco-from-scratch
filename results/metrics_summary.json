@@ -1,0 +1,34 @@
+{
+  "model": "yolo11n.yaml",
+  "pretrained": false,
+  "imgsz": 640,
+  "params_M": 2.62,
+  "GFLOPs": 6.7,
+  "mAP50-95": 0.3069178556716365,
+  "mAP50": 0.44122988987101575,
+  "mAP75": 0.3310744580641546,
+  "precision": 0.5933995119672193,
+  "recall": 0.40159192597252746,
+  "mean_F1": 0.45181923910918104,
+  "speed_ms_per_img": {
+    "preprocess": 0.68,
+    "inference": 13.14,
+    "loss": 0.0,
+    "postprocess": 1.05
+  },
+  "epochs_trained": 35,
+  "coco_official": {
+    "AP @[.50:.95] all": 0.3117,
+    "AP @.50": 0.447,
+    "AP @.75": 0.3357,
+    "AP small": 0.1449,
+    "AP medium": 0.341,
+    "AP large": 0.4569,
+    "AR @1": 0.2881,
+    "AR @10": 0.4837,
+    "AR @100": 0.5376,
+    "AR small": 0.2925,
+    "AR medium": 0.5946,
+    "AR large": 0.7406
+  }
+}
